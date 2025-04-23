@@ -9,6 +9,14 @@
   .play { width: 40px; height: 40px; background: #382fe3; color: #fff; font-size: 20px; display: flex; align-items: center; justify-content: center; border-radius: 125px; border: none; }
   i { overflow: hidden; }
   #content > div { display: flex; align-items: center; justify-content: space-between; padding: 10px; margin: 0 10px; border-bottom: 1px solid; }
+  #content > div { background: #047a7e; border-radius: 8px; padding: 10px 20px; border-bottom: none; }
+  #content { display: flex; flex-direction: column; gap: 15px; color: #fff; margin: 20px 0 0 0; }
+  @media only screen and (min-width: 768px) {
+    body { margin: 0 25%; background: #073042; color: #fff; } 
+    #loader { top: 25%; }
+    #content { display: flex; flex-direction: column; gap: 15px; }
+    #content > div { background: #047a7e; border-radius: 8px; padding: 10px 20px; border-bottom: none; }
+  }
 </style>
 <div class="header">
   <h2>Chapters</h2>
