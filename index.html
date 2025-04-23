@@ -1,16 +1,15 @@
+<link rel="manifest" href="manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#073042">
+<meta name="apple-mobile-web-app-title" content="DouchUp">
+<link rel="apple-touch-icon" href="https://i.ibb.co/CKfr8244/icon.png">
+<meta name="theme-color" content="#073042">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="loader.css">
 <script src="https://kit.fontawesome.com/8aa17a250d.js" crossorigin="anonymous"></script>
-<link rel="manifest" href="/manifest.json">
-<meta name="theme-color" content="#073042">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="DouchUp">
-<link rel="apple-touch-icon" href="https://i.ibb.co/CKfr8244/icon.png">
-<link rel="icon" type="image/x-icon" href="https://i.ibb.co/CKfr8244/icon.png">
-<title>DouchUp</title>
+
 <style>
   #username { margin: 10px;  }
   #slider-container { display: flex; align-items: center; justify-content: center; flex-direction: column; }
@@ -31,7 +30,7 @@
   .bell > i { font-size: 26px; color: #fff; }
   #slider-image { cursor: pointer; }
   @media only screen and (max-width: 600px) {
-    .main-link { display: none; }
+    .main { display: none; }
     #slider-image { width: 280px; }
   }
   @media only screen and (min-width: 768px) {
@@ -90,7 +89,36 @@
   </a>
 </div>
 <div id="loader" style="display:flex;justify-content:center;align-items:center;"><div class="loader"></div></div>
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js').then(function() {
+      console.log("Service Worker Registered");
+    });
+  }
+</script>
+<script>
+  let deferredPrompt;
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
 
+    const installBtn = document.createElement("button");
+    installBtn.innerText = "Install DouchUp";
+    installBtn.style = "position: fixed; bottom: 10px; left: 10px; z-index: 999;";
+    document.body.appendChild(installBtn);
+
+    installBtn.addEventListener('click', () => {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then(choiceResult => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the A2HS prompt');
+        }
+        deferredPrompt = null;
+        installBtn.remove();
+      });
+    });
+  });
+</script>
 <script>
   function reload(){
     location.reload();
