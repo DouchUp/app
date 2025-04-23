@@ -13,6 +13,13 @@
   .card { width: calc(100% - 8px); background: #00496d; border-radius: 12px; overflow: hidden; box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 8px; cursor: pointer; transition: transform 0.2s ease; }
   #results { display: flex; flex-wrap: wrap; gap: 16px; margin: 15px 0 0 0; align-items: center; justify-content: center; padding: 15px; }
   #noResults { position: fixed; top: 50%; text-align: center; width: 100%; }
+  @media only screen and (min-width: 768px) {
+    body { margin: 0 20%; background: #073042; }
+    #noResults { width: 50%; color: #fff; }
+    .card  img { height: auto; }
+    .card { width: calc(48% - 8px); }
+    .card:hover { transform: scale(1.02); }
+  }
 </style>
 <div class="header">
   <h2>Search Course</h2>
