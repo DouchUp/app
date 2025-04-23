@@ -6,7 +6,7 @@
 <style>
   #username { margin: 10px;  }
   #slider-container { display: flex; align-items: center; justify-content: center; flex-direction: column; }
-  #slider-container > img { border-radius: 12px; width : 310px; }
+  #slider-container > img { border-radius: 12px; }
   #dots { margin: 20px 0 40px 0; }
   #cards { border-radius: 25px; background: #fff; margin: -25px 0 0 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; padding: 10px 10px 30% 10px; }
   #cards .text { width: 100%; text-align: center; }
@@ -21,6 +21,28 @@
   .home > i { font-size: 25px; color: #fff; cursor: pointer; }
   .bell { position: fixed; right: 20px; top: 15px; background: #047a7e; padding: 10px; border-radius: 125px; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; }
   .bell > i { font-size: 26px; color: #fff; }
+  #slider-image { cursor: pointer; }
+  @media only screen and (max-width: 600px) {
+    .main { display: none; }
+    #slider-image { width: 280px; }
+  }
+  @media only screen and (min-width: 768px) {
+    body { background: #073042; }
+    #loader { width: 100%; top: 25%; }
+    .footer { display: none; }
+    #slider-image { width: 400px; }
+    #mainContent { margin: 0 15%; background: #073042; }
+    .bell { right: 15%; top: 20px; }
+    #cards div:not(.text) { width: calc(48% - 8px); } 
+    #cards div:not(.text) img { height: auto; }
+    #cards div:not(.text) h4 { text-align: center; }
+    #cards { padding: 10px; margin: 10px 10px 20px 10px; }
+    .main-link > a { color: #fff; font-weight: 600; }
+    .main-link > a:hover { text-decoration: underline; text-underline-offset: 4px; }
+    #username { margin: 10% 0 0 0; }
+    #cards > div > p { display: flex; align-items: center; }
+    .main-link { position: fixed; display: flex; top: 20px; align-items: center; justify-content: space-between; width: 55%; background: #047a7e; padding: 15px 50px; border-radius: 125px; color: #fff; }
+  }
 </style>
 <div id="mainContent" style="display:none;">
   <div class="header">
@@ -31,6 +53,13 @@
     </div>
   </div>
   <div id="cards"></div>
+  <div class="main-link">
+    <a onclick="reload">Home</a>
+    <a href="video.html">Shorts</a>
+    <a href="search.html">Search</a>
+    <a href="courses.html">Courses</a>
+    <a href="profile.html">Profile</a>
+  </div>
   <div class="footer">
       <a href="video.html" class="foot-item">
         <i class="fa-solid fa-video"></i>
@@ -114,7 +143,7 @@
         card.innerHTML = `
           <img src="${item.image}"/>
           <h4>${item.title}</h4>
-          <p>₹${item.price}</p>
+          <p><span class="mob-price">Price &nbsp;₹${item.price}</span></p>
         `;
         card.onclick = () => {
           localStorage.setItem('secret', item.key);
