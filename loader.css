@@ -1,4 +1,7 @@
 #loader { align-items: center; justify-content: center; position: fixed; width: 100%; top: 50%; height: 5%; }
+@media only screen and (min-width: 768px) { 
+  #loader { justify-content: center; align-items: center; height: 50%; width: 50%; }
+}
 .loader {
     color: #0088cc;
     width: 4px;
