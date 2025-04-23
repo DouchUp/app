@@ -8,9 +8,16 @@
 #title , #price { margin: 0 0 0 10px; }
 #aboutDiv , #descriptionDiv { margin: 10px; }
 #buttons { display: flex; justify-content: space-around; }
-#buttons > button { padding: 6px; width: 140px; border: none; background: none; border-bottom: 2px solid; text-transform: uppercase; font-size: 18px; font-weight: 500; }
+#buttons > button { color: #333; padding: 6px; width: 140px; border: none; background: none; border-bottom: 2px solid; text-transform: uppercase; font-size: 18px; font-weight: 500; }
 #buttons .active { border-bottom: 2px solid #382fe3; }
-#actions > button { border-radius: 125px; text-transform: uppercase; margin: 5px 10px; padding: 10px; width: 180px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; font-size: 19px; background: #d92569; color: #fff; font-weight: 600; border: none; }
+#actions > button { position: fixed; bottom: 0; border-radius: 12px 12px 0 0; text-transform: uppercase; padding: 15px; width: 100%; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; font-size: 19px; background: #d92569; color: #fff; font-weight: 600; border: none; }
+@media only screen and (min-width: 768px) {
+  body { margin: 0 25%; background: #073042; color: #fff; }
+  #loader { top: 25%; }
+  #slider { margin: 20px 0 0 0; }
+  #actions > button { width: 45%; }
+  #buttons > button { color: #fff; }
+}
 </style>
 
 <div id="loader" style="display:flex;"><div class="loader"></div></div>
@@ -64,7 +71,7 @@
 
       const actions = document.getElementById('actions');
       const btn = document.createElement('button');
-      btn.textContent = data.ownsCourse ? '👀 Watch' : '🛍️ Buy Now';
+      btn.textContent = data.ownsCourse ? '👀 Watch' : '🛍️ Grab Now';
       btn.onclick = () => window.location.href = data.ownsCourse ? 'view.html' : 'buy.html';
       actions.appendChild(btn);
     });
