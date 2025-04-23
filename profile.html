@@ -9,6 +9,11 @@
   .links { background: #fff; border-radius: 25px; margin: -25px 0 0 0; padding: 20px 15px; display: flex; flex-direction: column; gap: 10px; }
   .links > a { cursor: pointer; padding: 8px; display: flex; align-items: center; gap: 10px; font-size: 24px; color: #333; font-weight: 500; }
   hr { margin: 0 8px; }
+  @media only screen and (min-width: 768px) {
+    body { margin: 0 25%; background: #073042; }
+    #loader { width: 50%; top: 25%; }
+    .links { margin-bottom: 30px; }
+  }
 </style>
 <div id="loader" style="display: flex;"><div class="loader"></div></div>
 <div id="profile" style="display:none;"></div>
