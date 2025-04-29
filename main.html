@@ -3,8 +3,8 @@
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="loader.css">
 <style>
-#slider { display: flex; overflow-x: auto !important; gap: 10px; padding: 10px; scroll-behavior: smooth; }
-#slider img { width: 320px; height: 180px; object-fit: cover; border-radius: 8px; flex-shrink: 0; }
+#slider {padding: 10px; display: flex; align-items: center; justify-content: center; }
+#slider img { width: 100%; object-fit: cover; border-radius: 8px; flex-shrink: 0; }
 #title , #price { margin: 0 0 0 10px; }
 #aboutDiv , #descriptionDiv { margin: 10px; padding: 0 0 20% 0; }
 #buttons { display: flex; justify-content: space-around; }
@@ -13,10 +13,12 @@
 #actions > button { position: fixed; bottom: 0; border-radius: 12px 12px 0 0; text-transform: uppercase; padding: 15px; width: 100%; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; font-size: 19px; background: #d92569; color: #fff; font-weight: 600; border: none; }
 @media only screen and (min-width: 768px) {
   body { margin: 0 25%; background: #073042; color: #fff; }
+  #slider img { width: 70%; }
   #loader { top: 25%; }
   #slider { margin: 20px 0 0 0; }
-  #actions > button { width: 45%; }
+  #actions > button { width: 50%; }
   #buttons > button { color: #fff; }
+  #aboutDiv , #descriptionDiv { margin: 10px; padding: 0 0 10% 0; }
 }
 </style>
 
