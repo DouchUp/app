@@ -2,7 +2,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="#073042">
 <meta name="apple-mobile-web-app-title" content="DouchUp">
-<link rel="apple-touch-icon" href="https://i.ibb.co/CKfr8244/icon.png">
+<link rel="apple-touch-icon" href="https://i.ibb.co/qMg94hmC/icon.png">
 <meta name="theme-color" content="#073042">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -100,10 +100,9 @@
   function reload(){
     location.reload();
   }
-
+  
   const scriptURL = 'https://script.google.com/macros/s/AKfycbzdPi_pmR9PatMk7d6i-PkniJyKMptAXZzb6mVk55CU275IAdYeB2EMMcYHz6HyMHVi/exec';
-  const email = localStorage.getItem('c_local');
-  if (!email) window.location.href = "login.html";
+  const email = localStorage.getItem('c_local') || "guest@guest.com";
   
   fetch(scriptURL + '?action=index&email=' + encodeURIComponent(email))
     .then(res => res.json())
@@ -111,7 +110,8 @@
       document.getElementById("loader").style.display = "none";
       document.getElementById("mainContent").style.display = "block";
   
-      document.getElementById("username").innerHTML = "<p>Growing Star, </p> <span>" + data.username + "</span>";
+      const username = (email === "guest@guest.com") ? "Guest" : data.username;
+      document.getElementById("username").innerHTML = "<p>Growing Star, </p> <span>" + username + "</span>";
   
       let sliderIndex = 0;
       const images = data.slider;
@@ -165,4 +165,4 @@
         cardsContainer.appendChild(card);
       });
     });
-  </script>  
+</script>  
